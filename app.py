@@ -52,19 +52,24 @@ while True:
                 
                 if mensagens:
                     ultima_mensagem_texto = mensagens[-1].text.lower().strip()  # Ignora maiúsculas/minúsculas e remove espaços em branco
-                    print(f"Última mensagem recebida: {ultima_mensagem_texto}")
+                    print(f"Conteúdo bruto da mensagem: '{mensagens[-1].text}'")  # Conteúdo original da mensagem
+                    print(f"Última mensagem processada: '{ultima_mensagem_texto}'")  # Conteúdo após processar
 
                     # Define a resposta de acordo com o padrão identificado
                     if "bom dia" in ultima_mensagem_texto:
-                        resposta = "Bom dia! Como posso ajudá-lo hoje?"
+                        resposta = "Bom dia! Seja muito bem-vindo(a) ao Renata Rosa Beauty Concept! Como posso ajudá-lo(a)?"
                     elif "boa tarde" in ultima_mensagem_texto:
-                        resposta = "Boa tarde! Como posso ajudá-lo hoje?"
+                        resposta = "Boa tarde! Seja muito bem-vindo(a) ao Renata Rosa Beauty Concept! Como posso ajudá-lo(a)?"
                     elif "boa noite" in ultima_mensagem_texto:
-                        resposta = "Boa noite! Como posso ajudá-lo hoje?"
-                    elif "agendar" in ultima_mensagem_texto or "agendamento" in ultima_mensagem_texto:
-                        resposta = "Você gostaria de agendar um horário? Podemos ajudá-lo com isso!"
+                        resposta = "Boa noite! Seja muito bem-vindo(a) ao Renata Rosa Beauty Concept! Como posso ajudá-lo(a)?"
+                    elif any(palavra in ultima_mensagem_texto for palavra in ["agendar", "agendamento"]):
+                        resposta = "É a sua primeira visita ao nosso Espaço?"
+                    elif "sim" in ultima_mensagem_texto:
+                        resposta = "Favor nos enviar 3 opções de dias e horários, juntamente com seu nome completo, número de telefone que seja WhatsApp e data de nascimento para a efetivação do seu agendamento."
+                    elif "não" in ultima_mensagem_texto:
+                        resposta = "Favor nos enviar 3 opções de dias e horários em que deseja efetuar o seu agendamento."
                     else:
-                        resposta = "Olá! Bem-vindo ao Espaço Renata Rosa Beauty Concept. Como posso ajudá-lo hoje?"
+                        resposta = "Olá! Seja muito Bem-vindo(a) ao Espaço Renata Rosa Beauty Concept. Como posso ajudá-lo(a)?"
 
                     # Espera explicitamente pelo campo de entrada de texto estar disponível
                     input_box = WebDriverWait(navegador, 20).until(

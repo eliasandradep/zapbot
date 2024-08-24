@@ -10,6 +10,7 @@ python = "^3.12"
 selenium = "^4.23.1"
 chromedriver = "^2.24.1"
 chromedriver-py = "^128.0.6613.84"
+pandas = "^2.2.2"
 
 
 [build-system]
